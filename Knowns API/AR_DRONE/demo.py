@@ -104,7 +104,7 @@ def main():
 
         try:
             surface = pygame.image.fromstring(drone.image, (W, H), 'RGB') 
-	    
+	    ####!!!!!!! Pycopter addon
             data = drone.navdata.get(0, dict())
             theta = data.get('theta',0) # pitch up/down
             a_phi = data.get('phi',0) # roll right/left
@@ -112,6 +112,7 @@ def main():
             altitude = data.get('altitude',0) # altitude
             print "%f, %f, %f, %f" % (theta, a_phi, psi, altitude)
             print '\n\r'
+            #####!!!!!!
             # battery status
             hud_color = (255, 0, 0) if drone.navdata.get('drone_state', dict()).get('emergency_mask', 1) else (10, 10, 255)
             bat = drone.navdata.get(0, dict()).get('battery', 0)
