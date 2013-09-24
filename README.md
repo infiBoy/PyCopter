@@ -3,6 +3,10 @@ PyCopter
 
 PyCopter
 
+Developers:
+Maxim
+Guy
+
 יעדים ( ליום האקתון ראשון):
 
 1)	כתיבת Abstracts ל BaseCopter (ללמוד מAR.Drone + Crazyflie)
