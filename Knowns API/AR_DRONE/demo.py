@@ -33,7 +33,9 @@ import pygame
 import libardrone
 
 
+
 def main():
+    myowntimer = 0
     pygame.init()
     W, H = 320, 240
     screen = pygame.display.set_mode((W, H))
@@ -101,7 +103,15 @@ def main():
                     drone.speed = 1.0
 
         try:
-            surface = pygame.image.fromstring(drone.image, (W, H), 'RGB')
+            surface = pygame.image.fromstring(drone.image, (W, H), 'RGB') 
+	    
+            data = drone.navdata.get(0, dict())
+            theta = data.get('theta',0) # pitch up/down
+            a_phi = data.get('phi',0) # roll right/left
+            psi = data.get('psi',0) # yaw right/left
+            altitude = data.get('altitude',0) # altitude
+            print "%f, %f, %f, %f" % (theta, a_phi, psi, altitude)
+            print '\n\r'
             # battery status
             hud_color = (255, 0, 0) if drone.navdata.get('drone_state', dict()).get('emergency_mask', 1) else (10, 10, 255)
             bat = drone.navdata.get(0, dict()).get('battery', 0)
@@ -122,4 +132,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
