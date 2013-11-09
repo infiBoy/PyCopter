@@ -39,7 +39,7 @@ __all__ = ['RadioDriver']
 import logging
 logger = logging.getLogger(__name__)
 
-from cflib.crtp.crtpdriver import CRTPDriver
+from PyCopterAPI.CrazyFlie.cflib.crtp.crtpdriver import CRTPDriver
 from .crtpstack import CRTPPacket
 from .exceptions import WrongUriType
 import threading
@@ -47,7 +47,7 @@ import Queue
 import re
 import array
 
-from cflib.drivers.crazyradio import Crazyradio
+from PyCopterAPI.CrazyFlie.cflib.drivers.crazyradio import Crazyradio
 from usb import USBError
 
 class RadioDriver (CRTPDriver):

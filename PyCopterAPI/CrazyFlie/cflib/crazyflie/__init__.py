@@ -51,9 +51,9 @@ from .param import Param
 from .log import Log
 from .toccache import TocCache
 
-import cflib.crtp
+import PyCopterAPI.CrazyFlie.cflib.crtp
 
-from cflib.utils.callbacks import Caller
+from PyCopterAPI.CrazyFlie.cflib.utils.callbacks import Caller
 
 
 class State:

@@ -49,8 +49,8 @@ import re
 import time
 import struct
 from datetime import datetime
-from cflib.crazyflie.log import LogTocElement
-from cflib.crazyflie.param import ParamTocElement
+from PyCopterAPI.CrazyFlie.cflib.crazyflie.log import LogTocElement
+from PyCopterAPI.CrazyFlie.cflib.crazyflie.param import ParamTocElement
 
 import logging
 logger = logging.getLogger(__name__)

@@ -34,8 +34,8 @@ __author__ = 'Bitcraze AB'
 __all__ = ['Console']
 
 import struct
-from cflib.utils.callbacks import Caller
-from cflib.crtp.crtpstack import CRTPPort
+from PyCopterAPI.CrazyFlie.cflib.utils.callbacks import Caller
+from PyCopterAPI.CrazyFlie.cflib.crtp.crtpstack import CRTPPort
 
 
 class Console:

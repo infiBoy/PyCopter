@@ -37,9 +37,9 @@ the parameters that can be written/read.
 __author__ = 'Bitcraze AB'
 __all__ = ['Param', 'ParamTocElement']
 
-from cflib.utils.callbacks import Caller
+from PyCopterAPI.CrazyFlie.cflib.utils.callbacks import Caller
 import struct
-from cflib.crtp.crtpstack import CRTPPacket, CRTPPort
+from PyCopterAPI.CrazyFlie.cflib.crtp.crtpstack import CRTPPacket, CRTPPort
 from .toc import Toc, TocFetcher
 from threading import Thread
 
