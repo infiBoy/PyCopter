@@ -12,7 +12,7 @@ class ICopter:
   def __init__(self):
       self.movement = None
       self.network = None
-      self.sensors = CopSensors()
+      self.sensors = CopSensors(self)
   @abstractmethod
   def start(self): pass
   @abstractmethod
