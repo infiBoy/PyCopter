@@ -4,8 +4,8 @@ from PyCopterAPI.ICopter.ICopNet import ICopNet
 from PyCopterAPI.CrazyFlie.cflib.crazyflie import  Crazyflie
 
 class CrazyCopNet(ICopNet):
-    def __init__(self):
-        super(CrazyCopNet, self).__init__()
+    def __init__(self, copter):
+        super(CrazyCopNet, self).__init__(copter)
         pass
     def connect(self):
 

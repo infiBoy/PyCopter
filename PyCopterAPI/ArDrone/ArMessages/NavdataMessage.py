@@ -82,6 +82,8 @@ class NavdataMessage():
                     values = struct.unpack_from("IIfffIfffI", "".join(values))
                     values = dict(zip(['ctrl_state', 'battery', 'theta', 'phi', 'psi', 'altitude', 'vx', 'vy', 'vz', 'num_frames'], values))
 
+                    print '%f' % (values['vx'])
+
                     # Getting accelerometer data
                     self.gotAccelData = True
                     self.accelerometer.VectorX(values['vx'])

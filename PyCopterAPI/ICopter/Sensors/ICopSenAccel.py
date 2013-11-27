@@ -1,14 +1,10 @@
-# Python imports
 from abc import ABCMeta, abstractmethod
 
 # Our imports
 from PyCopterAPI.ICopter.Sensors.ISensor import ISensor
 from PyCopterAPI.ICopter.Event import Event
 
-
 class ICopSenAccel(ISensor):
-    __metaclass__ = ABCMeta
-
     def __init__(self):
         super(ICopSenAccel, self).__init__()
         self.gotAccelEvent = Event()

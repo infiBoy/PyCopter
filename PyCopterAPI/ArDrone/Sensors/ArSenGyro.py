@@ -15,4 +15,5 @@ class ArSenGyro(ICopSenGyro):
         self.senHolder.copter.network.navData.gotNavdataMessage -= self.processNavMessage
         pass
     def processNavMessage(self, navdata):
-        self.gotGyroEvent(navdata.Gyro())
+        if navdata.Gyro != None:
+            self.gotGyroEvent(navdata.Gyro)

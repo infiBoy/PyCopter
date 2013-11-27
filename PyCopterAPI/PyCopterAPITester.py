@@ -8,6 +8,8 @@ import sys
 # Our imports
 from PyCopterAPI.CopFactory import CopFactory
 
+from PyCopterAPI.ArDrone.ArWorkers.NavdataWorker import NavdataWorker
+
 # Global test functions
 
 # Logging accelerometer data
