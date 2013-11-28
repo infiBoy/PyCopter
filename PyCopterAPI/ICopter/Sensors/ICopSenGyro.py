@@ -4,8 +4,7 @@ from abc import ABCMeta, abstractmethod
 from PyCopterAPI.ICopter.Event import Event
 from PyCopterAPI.ICopter.Sensors.ISensor import ISensor
 
-class ICopSenGyro:
-    __metaclass__ = ABCMeta
+class ICopSenGyro(ISensor):
 
     def __init__(self):
         super(ICopSenGyro, self).__init__()

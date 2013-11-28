@@ -5,7 +5,11 @@ class ArSenAccel(ICopSenAccel):
     def __init__(self):
         super(ArSenAccel, self).__init__()
     def start(self):
-        self.gotAccelEvent(AccelData(1,1,1))
-        pass
+        # TODO : think how to do it better
+        self.senHolder.copter.network.navData.gotNavdataMessage += self.processNavMessage
     def stop(self):
-        pass
+         # TODO : think how to do it better
+        self.senHolder.copter.network.navData.gotNavdataMessage -= self.processNavMessage
+    def processNavMessage(self, navdata):
+        if navdata.Accel != None:
+            self.gotAccelEvent(navdata.Accel)

@@ -17,7 +17,7 @@ class CrazyCopter(ICopter):
         super(CrazyCopter, self).__init__()
 
         # Add the network
-        self.network = CrazyCopNet()
+        self.network = CrazyCopNet(self)
 
         # Add the movement
         self.movement = CrazyCopMov()

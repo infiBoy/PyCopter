@@ -6,8 +6,8 @@ from abc import ABCMeta, abstractmethod
 
 class ICopNet:
     __metaclass__ = ABCMeta
-    def __init__(self):
-        pass
+    def __init__(self, copter):
+        self.copter = copter
     @abstractmethod
     def connect(self): pass
     @abstractmethod
