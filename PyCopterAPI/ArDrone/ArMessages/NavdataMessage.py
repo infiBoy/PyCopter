@@ -82,24 +82,22 @@ class NavdataMessage():
                     values = struct.unpack_from("IIfffIfffI", "".join(values))
                     values = dict(zip(['ctrl_state', 'battery', 'theta', 'phi', 'psi', 'altitude', 'vx', 'vy', 'vz', 'num_frames'], values))
 
-                    print '%f' % (values['vx'])
-
                     # Getting accelerometer data
                     self.gotAccelData = True
-                    self.accelerometer.VectorX(values['vx'])
-                    self.accelerometer.VectorY(values['vy'])
-                    self.accelerometer.VectorZ(values['vz'])
+                    self.accelerometer.VectorX = float(values['vx'])
+                    self.accelerometer.VectorY = float(values['vy'])
+                    self.accelerometer.VectorZ = float(values['vz'])
 
                     # convert the millidegrees into degrees and round to int, as they
                     # are not so precise anyways
                     for i in 'theta', 'phi', 'psi':
-                        values[i] = int(values[i] / 1000)
+                        values[i] = float(values[i] / 1000)
                         #values[i] /= 1000
 
                     # Getting gyroscope data
                     self.gotGyroData = True
-                    self.gyroscope.ThetaAngle(values['theta'])
-                    self.gyroscope.ThetaAngle(values['phi'])
-                    self.gyroscope.ThetaAngle(values['psi'])
+                    self.gyroscope.ThetaAngle = float(values['theta'])
+                    self.gyroscope.PhiAngle = float(values['phi'])
+                    self.gyroscope.PsiAngle =float(values['psi'])
 
                 data[id_nr] = values

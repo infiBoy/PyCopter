@@ -15,6 +15,7 @@ class ArCopNet(ICopNet):
 
     def connect(self):
         # TODO : some sort of ping to know if drone is good and if not return False
+        self.commandWork.StartWorker()
         self.navData.startGettingNavData()
         return True
 

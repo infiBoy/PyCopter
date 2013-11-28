@@ -4,7 +4,7 @@ class ControlMessage():
     def __init__(self):
         self.command = ""
         self.params = []
-        self.speed = 1
+        self.speed = 0.2
 
     def f2i(self, f):
         """Interpret IEEE-754 floating-point value as signed integer.
@@ -78,6 +78,10 @@ class ControlMessage():
             p += 0b0100000000
         self.command = "REF"
         self.params = [p]
+
+    def CommandWatchDog(self):
+        self.command = "COMWDG"
+        self.params = []
 
     def CommandMove(self, progressive, lr, fb, vv, va):
      p = 1 if progressive else 0

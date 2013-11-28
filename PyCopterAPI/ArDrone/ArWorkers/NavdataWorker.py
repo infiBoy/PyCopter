@@ -13,7 +13,7 @@ from PyCopterAPI.ICopter.Sensors.GyroData import GyroData
 
 # Define consts
 ARDRONE_NAVDATA_PORT = 5554
-ARDRONE_NAVDATA_PORT_RECEIVE = 65535
+ARDRONE_NAVDATA_SIZE = 65535
 
 # TODO : remove from here  for separate implementation
 ARDRONE_COMMAND_PORT = 5556
@@ -25,6 +25,9 @@ class NavdataWorker():
         self.gettingMessagesThread = threading.Thread(target=self.__receiveNavMessages)
         self.sendIsAliveThread = threading.Thread(target=self.__sendIsAlive)
 
+        # Creating a udp socket
+        self.nav_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
     def startGettingNavData(self):
         self.sendIsAliveThread.start()
         self.gettingMessagesThread.start()
@@ -33,20 +36,15 @@ class NavdataWorker():
         pass
 
     def __sendIsAlive(self):
-        # Creating a udp socket
-        nav_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
         # Infinite loop for sending is alive
         while 1:
-            nav_socket.sendto("\x01\x00\x00\x00", ('192.168.1.1', ARDRONE_NAVDATA_PORT))
+            self.nav_socket.sendto("\x01\x00\x00\x00", ('192.168.1.1', ARDRONE_NAVDATA_PORT))
             # Sleep for 2000 ms and then send an is alive message
             #time.sleep(2000.0/1000000.0)
             time.sleep(5000.0/1000000.0)
 
     def __receiveNavMessages(self):
-        # Creating a udp socket
-        nav_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        nav_socket.sendto("\x01\x00\x00\x00", ('192.168.1.1', ARDRONE_NAVDATA_PORT))
+        self.nav_socket.sendto("\x01\x00\x00\x00", ('192.168.1.1', ARDRONE_NAVDATA_PORT))
         configure = ControlMessage()
         configure.CommandConfig("general:navdata_demo", "TRUE")
         self.sendCommand(configure)
@@ -56,7 +54,7 @@ class NavdataWorker():
         while 1:
             try:
                 is_good_data = True
-                data = nav_socket.recv(ARDRONE_NAVDATA_PORT_RECEIVE)
+                data = self.nav_socket.recv(ARDRONE_NAVDATA_SIZE)
             except IOError as e:
             # we consumed every packet from the socket and
             # continue with the last one
@@ -64,8 +62,6 @@ class NavdataWorker():
                 is_good_data = False
                 print "I/O error({0}): {1}".format(e.errno, e.strerror)
             if is_good_data:
-                print 'Got Navdata'
                 navdata = NavdataMessage()
                 navdata.decode(data)
-                print "%f" % (navdata.Gyro.phi)
                 self.gotNavdataMessage(navdata)

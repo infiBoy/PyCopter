@@ -3,7 +3,7 @@
 ###
 
 # Global imports
-import sys
+import sys,time
 
 # Our imports
 from PyCopterAPI.CopFactory import CopFactory
@@ -61,6 +61,12 @@ ardrone.sensors.getGyroSensor().gotGyroEvent += log_gyro_data
 if (ardrone.sensors.getGyroSensor().start() == False):
     print 'Problem in gyroscope starting of ArDrone'
     sys.exit()
+
+
+time.sleep(1)
+ardrone.movement.TakeOff()
+time.sleep(1)
+ardrone.movement.Land()
 
 print 'All good'
 
