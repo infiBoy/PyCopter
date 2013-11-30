@@ -4,11 +4,22 @@ PyCopter
 PyCopter
 
 Developers:
-Maxim
-Guy
+Nir Lev
+Maxim A.
+Guy B.
 
-יעדים ( ליום האקתון ראשון):
+Modules that work:
 
-1)	כתיבת Abstracts ל BaseCopter (ללמוד מAR.Drone + Crazyflie)
-2)	מימוש של פעולות בסיסיות (תקשורת,תזוזה למעלה/למטה) על סמך הAPI הקיימים שלהם.
-3)	בדיקת תעופה בחצר
+Worked modules(28/11):
+1)CopterBase waiting to implements by all kinds of copters.
+2)Pycopter implementation with Crafyfli -
+
+
+
+missions in front of us:
+1)Ar.Drone Pycopter implemetations
+2) control and stabilize the CF with Out-Camera.
+
+
+Known bugs:
+1)Plug the CF radio.
